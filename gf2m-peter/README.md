@@ -1,0 +1,1 @@
+# Perterson Decoder of Goppa Code

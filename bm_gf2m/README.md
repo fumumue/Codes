@@ -1,0 +1,1 @@
+# Goppa Code Decorer by BerleKamp-Massey Algorithm over gf2m

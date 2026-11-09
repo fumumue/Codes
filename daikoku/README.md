@@ -1,0 +1,1 @@
+# Goppa Code Decorder by Euclide Algorithm
