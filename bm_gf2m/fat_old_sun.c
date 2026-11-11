@@ -919,6 +919,38 @@ vec bms2(unsigned short s[], int kk)
     return (lo[j - 1]);
 }
 
+
+
+static void doubled_syndrome(
+    const unsigned short *s,
+    const unsigned short *alpha,
+    unsigned short *S, vec x)
+    
+{
+    for (int j = 0; j < 2 * T; j++)
+        S[j] = 0;
+
+    /*
+     * v = (s | 0)
+     * Here s is a binary vector of length N.
+     */
+    for (int i = 0; i < N; i++) {
+        if (s[i] != 1)
+            continue;
+
+        unsigned short gx = trace(v2o(x),alpha[i]);
+        unsigned short weight = oinv(mlt(gx, gx));
+
+        unsigned short power = 1;
+
+        for (int j = 0; j < 2 * T; j++) {
+            S[j] ^= mlt(power, weight);
+            power = mlt(power, alpha[i]);
+        }
+    }
+}
+
+
 typedef struct
 {
     vec f;
